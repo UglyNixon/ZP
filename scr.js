@@ -27,3 +27,8 @@ let timer = setInterval(function () {
   anton.innerHTML = krasivo;
   antonD.innerHTML = krasivoD;
 }, 100);
+document.getElementById('restart').addEventListener('click',()=>{
+  date = new Date();
+  localStorage.setItem("date", date);
+  window.location.reload()
+})
