@@ -32,3 +32,6 @@ document.getElementById('restart').addEventListener('click',()=>{
   localStorage.setItem("date", date);
   window.location.reload()
 })
+document.getElementById('corup').onclick = function(){
+  document.location.href = "https://fbk.info/about/";
+}
