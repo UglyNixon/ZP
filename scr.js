@@ -1,22 +1,19 @@
 let yearZp = 2160000;
 let anton = document.getElementById("anton");
 let antonD = document.getElementById("antond");
-let pribavka = yearZp / ((315360000 * 3) / 4);
+let pribavka = yearZp / ((365*24*60*60*10 * 3) / 4)// прирост в 0.1 секунды
 let balans = 0;
 let date;
 let dateHt = document.getElementById("date");
-
+let longtime;
 if (localStorage.getItem("date")) {
   date = localStorage.getItem("date");
+  longtime =  new Date()- new Date(date) ;
+  balans =balans+pribavka*longtime/100;
 } else {
   localStorage.setItem("date", new Date());
-  date = date = localStorage.getItem("date");
+  date = localStorage.getItem("date");
 }
-
-if (localStorage.getItem("balans")) {
-  balans = +localStorage.getItem("balans");
-}
-
 let timer = setInterval(function () {
   dateHt.innerHTML = `начиная с:  ${date.slice(8, 10)}  / ${date.slice(
     4,
@@ -29,5 +26,4 @@ let timer = setInterval(function () {
   let krasivoD = d.slice(0, 2) + d.slice(2, 5) + " $";
   anton.innerHTML = krasivo;
   antonD.innerHTML = krasivoD;
-  localStorage.setItem("balans", balans);
 }, 100);
