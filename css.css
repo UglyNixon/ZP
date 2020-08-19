@@ -73,7 +73,7 @@ body {
   width: 200px;
   margin-bottom: 20px;
 }
-#restart{
+#restart {
   font-style: italic;
   background-color: rgb(89, 110, 207);
   border-radius: 3px;
@@ -81,6 +81,14 @@ body {
   color: antiquewhite;
   box-shadow: 0px 10px 17px rgb(0, 0, 2);
 }
-#restart:hover{
+#restart:hover {
   box-shadow: 0px 10px 17px rgb(255, 255, 255);
+}
+select {
+  margin-top: 20px;
+  width: 25%;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.25em;
 }
