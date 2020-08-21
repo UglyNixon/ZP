@@ -6,6 +6,15 @@ let balans = 0;
 let date;
 let dateHt = document.getElementById("date");
 let longtime;
+let imgBook = {
+  ques: "ques.webp",
+  guiness: "guiness.webp",
+  guinessprice: 140,
+  doshik: "doshik.webp",
+  doshikprice: 38,
+  fuel: "fuel.webp",
+  fuelprice: 45,
+};
 if (localStorage.getItem("date")) {
   date = localStorage.getItem("date");
   longtime = new Date() - new Date(date);
@@ -31,32 +40,26 @@ document.getElementById("restart").addEventListener("click", () => {
 document.getElementById("corup").onclick = function () {
   document.location.href = "https://fbk.info/about/";
 };
-
-// курс доллара
-// Получаем текущие курсы валют в rss-формате с сайта www.cbr.ru
-
-let url = "https://www.cbr-xml-daily.ru/daily_json.js";
-function getJSON(url, qs_params) {
-  function buildQueryString(params) {
-    return Object.entries(params)
-      .map((d) => `${d[0]}=${d[1]}`)
-      .join("&");
+document.getElementById("namesel").addEventListener("change", (event) => {
+  console.log(event.target.value);
+  switch (event.target.value) {
+    case "0":
+      x.innerHTML = "";
+      kol.innerHTML = "";
+      break;
+    case "1":
+      showNalog("guiness");
+      break;
+    case "2":
+      showNalog("doshik");
+      break;
+    case "3":
+      showNalog("fuel");
+      break;
   }
-
-  return new Promise((resolve, reject) => {
-    const qs = qs_params ? "?" + buildQueryString(qs_params) : "";
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", `${url}${qs}`);
-
-    xhr.onload = function () {
-      if (xhr.status >= 200 && xhr.status < 400) {
-        resolve(JSON.parse(xhr.responseText));
-      } else {
-        resolve(xhr.responseText);
-      }
-    };
-    xhr.onerror = () => reject(xhr.statusText);
-    xhr.send();
-  });
+});
+function showNalog(str) {
+  x.innerHTML = "X";
+  kol.innerHTML = `${((balans * 0.43) / imgBook[str + "price"]).toFixed(0)}`;
+  stuff.style.backgroundImage = `url(${imgBook[str]})`;
 }
-console.log(getJSON(url).then());
