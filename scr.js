@@ -44,6 +44,7 @@ document.getElementById("namesel").addEventListener("change", (event) => {
   console.log(event.target.value);
   switch (event.target.value) {
     case "0":
+      stuff.style.backgroundImage = `url("ques.webp")`;
       x.innerHTML = "";
       kol.innerHTML = "";
       break;
